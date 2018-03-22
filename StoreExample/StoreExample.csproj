@@ -95,12 +95,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DataBaseManager\DataBaseContext.cs" />
+    <Compile Include="DataBaseManager\Initializer.cs" />
     <Compile Include="DataBaseManager\PhoneItemManager.cs" />
     <Compile Include="DataBaseManager\PurchaseManager.cs" />
     <Compile Include="Global.asax.cs">
@@ -124,7 +129,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <PropertyGroup>
