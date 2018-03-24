@@ -112,10 +112,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\PhoneItem.cs" />
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="MyHtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
