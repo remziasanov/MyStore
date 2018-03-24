@@ -17,16 +17,19 @@ namespace StoreExample.DataBaseManager
             context.Purchases.Add(new Purchase
             {
                 Id = Guid.NewGuid(),
-                Email = "remziasanov@gmail.com",
+                Email = "admin@gmail.com",
                 Name = "Admin",
                 SurName = "Admin",
                 Password = "Admin123456789",
-                Phone = "+79788998955",
-                Address = "Simferopol, Gorkogo 11",
+                Phone = "+7978000000",
+                Address = "Simferopol",
                 IndexPost = "290000",
                 RoleId = 1
             });
-            context.Phones.Add(new PhoneItem { Id = Guid.NewGuid(), ModelOfPhone = "Iphone X", Description = "Крутой телефон", Category = "Смартфоны", SubCategory = "IOS", Price = 75000, ImgUrl = "" });
+            context.Phones.Add(new PhoneItem { Id = Guid.NewGuid(), ModelOfPhone = "Iphone X",
+              Description = "iPhone имеет экран 5,8 дюйма с разрешением 2436х1125 точек и технологией True Tone (настраивает теплоту белого цвета на экране).iPhone X получил оперативную память объемом 3 ГБ и 128 / 256 ГБ встроенной памяти.Кроме того,в гаджете реализована технология беспроводной зарядки благодаря его стеклянному корпусу. ",
+              Category = "Смартфоны", SubCategory = "IOS", Price = 75000, ImgUrl = "https://static.svyaznoy.ru/upload/iblock/0f2/iphonex-spgry-34br-34fl-2up-gb-en-screen.jpg/resize/483x483/hq/" });
+
             base.Seed(context);
         }
     }
