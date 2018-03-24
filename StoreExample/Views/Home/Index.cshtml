@@ -1,0 +1,74 @@
+﻿@model StoreExample.Models.IndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+<table class="table">
+    <tr>
+        <th>
+            Название
+        </th>
+        <th>
+            Описание
+        </th>
+        <th>
+            Изображение
+        </th>
+        <th>
+            Цена
+        </th>
+        <th>
+            Категория
+        </th>
+        <th>
+            Подкатегория
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item2 in Model.Phones)
+        {
+
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item2.ModelOfPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item2.Description)
+                </td>
+                <td>
+                    <a href="Instrumental/Details/@item2.Id">
+                        <img src="@item2.ImgUrl" width="200" height="150" />
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item2.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item2.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item2.SubCategory)
+                </td>
+                <td>
+
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Изменить", "Edit", "Instrumental", new { id = item2.Id }, null)
+
+                        @Html.ActionLink("Удалить", "Delete", "Instrumental", new { id = item2.Id }, null)
+                    }
+                    @*<a href="~/Instrumental/Details/@item.Id">Подробнее</a>*@
+                    @Html.ActionLink("Подробнее", "Details", "Instrumental", new { id = item2.Id }, null)
+
+                    @*@Html.ActionLink("Удалить","Delete", "Instrumental", item.Id)*@
+                </td>
+            </tr>
+        }
+
+
+    }
+
+</table>

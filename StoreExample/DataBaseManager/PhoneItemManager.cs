@@ -8,7 +8,7 @@ namespace StoreExample.DataBaseManager
 {
     public class PhoneItemManager
     {
-        public static List<PhoneItem> GetInstruments()
+        public static List<PhoneItem> GetPhones()
         {
             var result = new List<PhoneItem>();
             using (DataBaseContext db = new DataBaseContext())
@@ -40,7 +40,7 @@ namespace StoreExample.DataBaseManager
                 return null;
             }
         }
-        public static void AddInstrument(PhoneItem inst)
+        public static void AddPhone(PhoneItem inst)
         {
             inst.Id = Guid.NewGuid();
             using (DataBaseContext db = new DataBaseContext())
@@ -49,7 +49,7 @@ namespace StoreExample.DataBaseManager
                 db.SaveChanges();
             }
         }
-        public static void DeleteIntrument(Guid id)
+        public static void DeletePhone(Guid id)
         {
             using (DataBaseContext db = new DataBaseContext())
             {
@@ -66,7 +66,7 @@ namespace StoreExample.DataBaseManager
                 db.SaveChanges();
             }
         }
-        public static void EditInstrument(PhoneItem phone)
+        public static void EditPhone(PhoneItem phone)
         {
             using (DataBaseContext db = new DataBaseContext())
             {
@@ -81,7 +81,7 @@ namespace StoreExample.DataBaseManager
                 db.SaveChanges();
             }
         }
-        public static bool BuyInstrument(Guid id)
+        public static bool BuyPhone(Guid id)
         {
             using (DataBaseContext db = new DataBaseContext())
             {

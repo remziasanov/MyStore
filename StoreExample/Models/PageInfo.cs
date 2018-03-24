@@ -17,7 +17,7 @@ namespace StoreExample.Models
     }
     public class IndexViewModel
     {
-        public IEnumerable<PhoneItem> Instruments { get; set; }
+        public IEnumerable<PhoneItem> Phones { get; set; }
         public PageInfo PageInfo { get; set; }
     }
 }
