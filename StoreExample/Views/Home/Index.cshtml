@@ -1,4 +1,5 @@
 ﻿@model StoreExample.Models.IndexViewModel
+@using StoreExample.MyHtmlHelpers
 @{
     ViewBag.Title = "Home Page";
 }
@@ -72,3 +73,7 @@
     }
 
 </table>
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div><br /><br />

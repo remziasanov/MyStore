@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhoneController.cs" />
     <Compile Include="DataBaseManager\DataBaseContext.cs" />
@@ -159,6 +160,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\Phone\" />
   </ItemGroup>
   <PropertyGroup>
