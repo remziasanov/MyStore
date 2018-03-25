@@ -61,6 +61,7 @@ namespace StoreExample.Controllers
             }
         }
         [HttpGet]
+        [HandleError(ExceptionType = typeof( ArgumentException), Master ="Index" ) ]
         public ActionResult Details(Guid id)
         {
             var result = PhoneItemManager.Get(id);
