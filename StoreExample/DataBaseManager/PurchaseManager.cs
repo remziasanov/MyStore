@@ -51,5 +51,14 @@ namespace StoreExample.DataBaseManager
             }
             return user;
         }
+        public static string GetNameByEmail(string email)
+        {
+            Purchase user = null;
+            using (DataBaseContext db = new DataBaseContext())
+            {
+                user = db.Purchases.FirstOrDefault(u => u.Email == email);
+            }
+            return user.Name.ToString();
+        }
     }
 }
