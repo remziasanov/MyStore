@@ -1,5 +1,5 @@
-﻿@model StoreExample.Models.IndexViewModel
-@using StoreExample.MyHtmlHelpers
+﻿@model PagedList.IPagedList<StoreExample.Models.PhoneItem>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Home Page";
 }
@@ -27,7 +27,7 @@
     </tr>
     @if (Model != null)
     {
-        foreach (var item2 in Model.Phones)
+        foreach (var item2 in Model)
         {
 
             <tr>
@@ -74,6 +74,6 @@
 
 </table>
 <br />
-<div class="btn-group">
-    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
-</div><br /><br />
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

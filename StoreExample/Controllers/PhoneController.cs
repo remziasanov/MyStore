@@ -51,13 +51,7 @@ namespace StoreExample.Controllers
             }
             else
             {
-                PhoneItemManager.DeletePhone(id);
-                var list = PhoneItemManager.GetPhones();
-                int pageSize = 3; //количество объектов на странице
-                var result2 = list.Skip((1 - 1) * pageSize).Take(pageSize);
-                PageInfo pageInfo = new PageInfo { PageNumber = 1, PageSize = pageSize, TotalItems = list.Count };
-                IndexViewModel indexViewModel = new IndexViewModel { PageInfo = pageInfo, Phones = result2 };
-                return View("../Home/Index", indexViewModel);
+                return View("../Home/Index");
             }
         }
         [HttpGet]
