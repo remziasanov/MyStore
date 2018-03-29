@@ -11,7 +11,7 @@ namespace StoreExample.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        [HandleError(ExceptionType = typeof(ArgumentNullException), View = "ExceptionFound")]
         public ActionResult Index(int? page)
         {
 

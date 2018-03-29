@@ -1,4 +1,5 @@
-﻿using StoreExample.DataBaseManager;
+﻿using PagedList;
+using StoreExample.DataBaseManager;
 using StoreExample.Models;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace StoreExample.Controllers
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]
+        [HandleError(ExceptionType = typeof(ArgumentNullException), View = "ExceptionFound")]
         public ActionResult Delete(Guid id)
         {
             var onephone = PhoneItemManager.Get(id);
@@ -37,7 +39,9 @@ namespace StoreExample.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                var resultlist = PhoneItemManager.GetPhones();
+                var result = resultlist.ToPagedList(1, 3);
+                return View(result);
             }
         }
         [Authorize(Roles = "Admin")]
@@ -51,7 +55,8 @@ namespace StoreExample.Controllers
             }
             else
             {
-                return View("../Home/Index");
+                PhoneItemManager.DeletePhone(id);
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
         }
         [HttpGet]

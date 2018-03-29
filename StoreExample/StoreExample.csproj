@@ -165,6 +165,7 @@
     <Content Include="Views\Phone\Details.cshtml" />
     <Content Include="Views\Phone\Edit.cshtml" />
     <Content Include="Views\Phone\Delete.cshtml" />
+    <Content Include="Views\Phone\ExceptionFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
