@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhoneController.cs" />
+    <Compile Include="DataBaseManager\CartManager.cs" />
     <Compile Include="DataBaseManager\DataBaseContext.cs" />
     <Compile Include="DataBaseManager\Initializer.cs" />
     <Compile Include="DataBaseManager\PhoneItemManager.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartLine.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PhoneItem.cs" />
     <Compile Include="Models\Purchase.cs" />
