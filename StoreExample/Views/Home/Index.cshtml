@@ -56,14 +56,15 @@
 
 
                     @if (User.IsInRole("Admin"))
-                    {
-                        @Html.ActionLink("Изменить", "Edit", "Phone", new { id = item2.Id }, null)
+    {
+                @Html.ActionLink("Изменить", "Edit", "Phone", new { id = item2.Id }, null)
 
-                        @Html.ActionLink("Удалить", "Delete", "Phone", new { id = item2.Id }, null)
-                    }
-                    @*<a href="~/Instrumental/Details/@item.Id">Подробнее</a>*@
+                @Html.ActionLink("Удалить", "Delete", "Phone", new { id = item2.Id }, null)
+}
+                @*<a href="~/Instrumental/Details/@item.Id">Подробнее</a>*@
                     @Html.ActionLink("Подробнее", "Details", "Phone", new { id = item2.Id }, null)
-
+                    
+                    @Html.ActionLink("Добавить в Корзину", "AddToCart", "Cart", new { id = item2.Id }, null)
                     @*@Html.ActionLink("Удалить","Delete", "Instrumental", item.Id)*@
                 </td>
             </tr>

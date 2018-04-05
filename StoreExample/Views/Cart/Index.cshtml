@@ -1,0 +1,71 @@
+﻿@model List<StoreExample.Models.CartLine>
+@{
+    ViewBag.Title = "Корзина";
+}
+
+<h2>Корзина</h2>
+<table class="table">
+    <tr>
+        <th>
+            Название
+        </th>
+        <th>
+            Описание
+        </th>
+        <th>
+            Изображение
+        </th>
+        <th>
+            Цена
+        </th>
+        <th>
+            Количество
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item2 in Model)
+        {
+
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item2.Phone_cart.ModelOfPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item2.Phone_cart.Description)
+                </td>
+                <td>
+                    <a href="Instrumental/Details/@item2.Phone_cart.Id">
+                        <img src="@item2.Phone_cart.ImgUrl" width="200" height="350" />
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item2.Phone_cart.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item2.Quantity)
+                </td>
+            </tr>
+        }
+        <tr>
+            <th></th>
+            <th></th>
+
+            <th>
+                Общая сумма
+            </th>
+            <td>
+                @ViewBag.TotalSum.ToString()  руб
+            </td>
+        </tr>
+
+
+    }
+
+</table>
+<button class="">@Html.ActionLink("Продолжить покупки", "Index", "Home", new { area = "" }, new { @class = "tab" })</button>
+
+
+
