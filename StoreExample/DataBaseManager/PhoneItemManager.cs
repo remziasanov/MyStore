@@ -53,7 +53,7 @@ namespace StoreExample.DataBaseManager
         {
             using (DataBaseContext db = new DataBaseContext())
             {
-                var temp = new PhoneItem ();
+                var temp = new PhoneItem();
                 foreach (var item in db.Phones)
                 {
                     if (item.Id == id)
@@ -91,6 +91,14 @@ namespace StoreExample.DataBaseManager
                         return true;
                 }
                 return false;
+            }
+        }
+        public static List<PhoneItem>PhoneSearch(string name)
+        {
+            using (DataBaseContext db = new DataBaseContext())
+            {
+              var result = db.Phones.Where(p => p.ModelOfPhone.Contains(name)).ToList();
+                return result;
             }
         }
     }

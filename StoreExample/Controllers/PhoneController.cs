@@ -96,6 +96,17 @@ namespace StoreExample.Controllers
             return RedirectToAction("../Home/Index");
         }
 
+        [HttpPost]
+        public ActionResult PhoneSearch(string name)
+        {
+            var res = PhoneItemManager.PhoneSearch(name);
+            if (res.Count <= 0)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(res);
+        }
+
 
     }
 }

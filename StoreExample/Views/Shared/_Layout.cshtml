@@ -8,6 +8,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,16 +19,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 @Html.ActionLink("PhoneStore", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @if (User.Identity.IsAuthenticated)
-                 {
-                 @Html.ActionLink("(" + @PurchaseManager.GetNameByEmail(User.Identity.Name.ToString()) + ") " + "Выход", "Logoff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                {
+                    @Html.ActionLink("(" + @PurchaseManager.GetNameByEmail(User.Identity.Name.ToString()) + ") " + "Выход", "Logoff", "Account", new { area = "" }, new { @class = "navbar-brand" })
 
-                 }
+                }
                 else
                 {
-                @Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })
                 }
                 @Html.ActionLink("Корзина", "Index", "Cart", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -44,8 +46,10 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+    <img class="sprite" />
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 </body>
 </html>

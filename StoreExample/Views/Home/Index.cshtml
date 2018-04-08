@@ -3,6 +3,16 @@
 @{
     ViewBag.Title = "Home Page";
 }
+
+<div>
+    @using (Ajax.BeginForm("PhoneSearch", "Phone", new AjaxOptions { UpdateTargetId = "resultsphone" }))
+    {
+        <input type="text" name="name" />
+        <input type="submit" value="Поиск" class="btn" />
+    }
+    <div id="resultsphone"></div>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -56,14 +66,14 @@
 
 
                     @if (User.IsInRole("Admin"))
-    {
-                @Html.ActionLink("Изменить", "Edit", "Phone", new { id = item2.Id }, null)
+                    {
+                        @Html.ActionLink("Изменить", "Edit", "Phone", new { id = item2.Id }, null)
 
-                @Html.ActionLink("Удалить", "Delete", "Phone", new { id = item2.Id }, null)
-}
-                @*<a href="~/Instrumental/Details/@item.Id">Подробнее</a>*@
+                        @Html.ActionLink("Удалить", "Delete", "Phone", new { id = item2.Id }, null)
+                    }
+                    @*<a href="~/Instrumental/Details/@item.Id">Подробнее</a>*@
                     @Html.ActionLink("Подробнее", "Details", "Phone", new { id = item2.Id }, null)
-                    
+
                     @Html.ActionLink("Добавить в Корзину", "AddToCart", "Cart", new { id = item2.Id }, null)
                     @*@Html.ActionLink("Удалить","Delete", "Instrumental", item.Id)*@
                 </td>
@@ -78,3 +88,4 @@
 Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
