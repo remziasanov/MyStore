@@ -5,11 +5,12 @@
 }
 
 <div>
-    @using (Ajax.BeginForm("PhoneSearch", "Phone", new AjaxOptions { UpdateTargetId = "resultsphone" }))
+    @using (Ajax.BeginForm("PhoneSearch", "Phone", new AjaxOptions { UpdateTargetId = "resultsphone", LoadingElementId = "loading", LoadingElementDuration = 1000 }))
     {
         <input type="text" name="name" />
         <input type="submit" value="Поиск" class="btn" />
     }
+    <img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50"/>
     <div id="resultsphone"></div>
 </div>
 
