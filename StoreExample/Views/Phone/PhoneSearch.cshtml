@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<StoreExample.Models.PhoneItem>
 
-<div id="resultsphone">
+<div>
     <h3>Все телефоны данной модели: @Model.First().ModelOfPhone</h3>
     <ul>
         @foreach (var item in Model)
         {
-            <li>@item.ModelOfPhone</li>
+            <li>@item.ModelOfPhone - @item.Price руб</li>
         }
     </ul>
 </div>
