@@ -31,7 +31,10 @@
                     @Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })
                 }
-                @Html.ActionLink("Корзина", "Index", "Cart", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="../Cart/Index" class="navbar-brand" margin="left-top"  >
+                        <span class=" glyphicon glyphicon-shopping-cart "></span> Корзина
+                    </a>
+                @*@Html.ActionLink("Корзина", "Index", "Cart", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>

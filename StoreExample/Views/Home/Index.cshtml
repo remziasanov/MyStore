@@ -50,7 +50,7 @@
                     @Html.DisplayFor(modelItem => item2.Description)
                 </td>
                 <td>
-                    <a href="Instrumental/Details/@item2.Id">
+                    <a href="Phone/Details/@item2.Id">
                         <img src="@item2.ImgUrl" width="200" height="350" />
                     </a>
                 </td>
@@ -64,19 +64,24 @@
                     @Html.DisplayFor(modelItem => item2.SubCategory)
                 </td>
                 <td>
-
+                    
 
                     @if (User.IsInRole("Admin"))
                     {
-                        @Html.ActionLink("Изменить", "Edit", "Phone", new { id = item2.Id }, null)
-
-                        @Html.ActionLink("Удалить", "Delete", "Phone", new { id = item2.Id }, null)
+                    <a href="../Phone/Delete/@item2.Id" class="btn btn-danger">
+                        <span class=" glyphicon glyphicon-trash "></span>
+                    </a>
+                    <br/>
+                    <a href="../Phone/Edit/@item2.Id" class="btn btn-info">
+                        <span class=" glyphicon glyphicon-edit "></span>
+                    </a>
+                    <br/>
                     }
-                    @*<a href="~/Instrumental/Details/@item.Id">Подробнее</a>*@
-                    @Html.ActionLink("Подробнее", "Details", "Phone", new { id = item2.Id }, null)
-
-                    @Html.ActionLink("Добавить в Корзину", "AddToCart", "Cart", new { id = item2.Id }, null)
-                    @*@Html.ActionLink("Удалить","Delete", "Instrumental", item.Id)*@
+                    <br/> 
+                    <a href="../Cart/AddToCart/@item2.Id" class="btn btn-success " margin="left-top"  >
+                        <span class=" glyphicon glyphicon-shopping-cart "></span> Добавить
+                    </a>
+                    
                 </td>
             </tr>
         }
