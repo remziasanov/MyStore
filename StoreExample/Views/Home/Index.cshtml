@@ -4,17 +4,18 @@
     ViewBag.Title = "Home Page";
 }
 
-<div>
-    @using (Ajax.BeginForm("PhoneSearch", "Phone", new AjaxOptions { UpdateTargetId = "resultsphone", LoadingElementId = "loading", LoadingElementDuration = 1000 }))
-    {
-        <input type="text" name="name" />
-        <input type="submit" value="Поиск" class="btn" />
-    }
-    <img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50"/>
-    <div id="resultsphone"></div>
-</div>
-
-<table class="table">
+@*<div>
+        @using (Ajax.BeginForm("PhoneSearch", "Phone", new AjaxOptions { UpdateTargetId = "resultsphone", LoadingElementId = "loading", LoadingElementDuration = 1000 }))
+        {
+            <input type="text" name="name" />
+            <input type="submit" value="Поиск" class="btn" />
+        }
+        <img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50"/>
+        <div id="resultsphone"></div>
+    </div>*@
+<div id="resultsphone"></div>
+<img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50" />
+<table class="table table-responsive">
     <tr>
         <th>
             Название
@@ -51,7 +52,7 @@
                 </td>
                 <td>
                     <a href="Phone/Details/@item2.Id">
-                        <img src="@item2.ImgUrl" width="200" height="350" />
+                        <img src="@item2.ImgUrl" width="200" height="350"/>
                     </a>
                 </td>
                 <td>
@@ -64,24 +65,24 @@
                     @Html.DisplayFor(modelItem => item2.SubCategory)
                 </td>
                 <td>
-                    
+
 
                     @if (User.IsInRole("Admin"))
                     {
-                    <a href="../Phone/Delete/@item2.Id" class="btn btn-danger">
-                        <span class=" glyphicon glyphicon-trash "></span>
-                    </a>
-                    <br/>
-                    <a href="../Phone/Edit/@item2.Id" class="btn btn-info">
-                        <span class=" glyphicon glyphicon-edit "></span>
-                    </a>
-                    <br/>
+                        <a href="../Phone/Delete/@item2.Id" class="btn btn-danger">
+                            <span class=" glyphicon glyphicon-trash "></span>
+                        </a>
+                        <br />
+                        <a href="../Phone/Edit/@item2.Id" class="btn btn-info">
+                            <span class=" glyphicon glyphicon-edit "></span>
+                        </a>
+                        <br />
                     }
-                    <br/> 
-                    <a href="../Cart/AddToCart/@item2.Id" class="btn btn-success " margin="left-top"  >
+                    <br />
+                    <a href="../Cart/AddToCart/@item2.Id" class="btn btn-success ">
                         <span class=" glyphicon glyphicon-shopping-cart "></span> Добавить
                     </a>
-                    
+
                 </td>
             </tr>
         }
@@ -93,5 +94,6 @@
 <br />
 Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
 

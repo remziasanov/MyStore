@@ -39,14 +39,14 @@ namespace StoreExample.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public RedirectToRouteResult RemoveFromCart(Guid id)
+        public ActionResult RemoveFromCart(Guid id)
         {
             PhoneItem phone = PhoneItemManager.Get(id);
             if (phone != null)
             {
                 GetCart().RemoveLine(phone);
             }
-            return RedirectToAction("Index", "Home");
+            return View("Index", GetCart().Lines);
         }
     }
 }
