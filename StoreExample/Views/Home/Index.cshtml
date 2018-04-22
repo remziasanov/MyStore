@@ -4,96 +4,174 @@
     ViewBag.Title = "Home Page";
 }
 
-@*<div>
-        @using (Ajax.BeginForm("PhoneSearch", "Phone", new AjaxOptions { UpdateTargetId = "resultsphone", LoadingElementId = "loading", LoadingElementDuration = 1000 }))
-        {
-            <input type="text" name="name" />
-            <input type="submit" value="Поиск" class="btn" />
-        }
-        <img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50"/>
-        <div id="resultsphone"></div>
-    </div>*@
-<div id="resultsphone"></div>
-<img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50" />
-<table class="table table-responsive">
-    <tr>
-        <th>
-            Название
-        </th>
-        <th>
-            Описание
-        </th>
-        <th>
-            Изображение
-        </th>
-        <th>
-            Цена
-        </th>
-        <th>
-            Категория
-        </th>
-        <th>
-            Подкатегория
-        </th>
-        <th></th>
-    </tr>
-    @if (Model != null)
-    {
-        foreach (var item2 in Model)
-        {
-
-            <tr>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item2.ModelOfPhone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item2.Description)
-                </td>
-                <td>
-                    <a href="Phone/Details/@item2.Id">
-                        <img src="@item2.ImgUrl" width="200" height="350"/>
-                    </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item2.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item2.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item2.SubCategory)
-                </td>
-                <td>
-
-
-                    @if (User.IsInRole("Admin"))
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item">Category 1</a>
+                <a href="#" class="list-group-item">Category 2</a>
+                <a href="#" class="list-group-item">Category 3</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row carousel-holder">
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="slide-image" src="http://appleua.biz/img/cms/7_01.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="http://appleua.biz/img/cms/iphone-logo-800x300.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="http://www.stevsky.ru/dibujos/2017/01/Xiaomi-Redmi-4-Buy-Shop_800x300.jpg" alt="">
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var item2 in Model)
                     {
-                        <a href="../Phone/Delete/@item2.Id" class="btn btn-danger">
-                            <span class=" glyphicon glyphicon-trash "></span>
-                        </a>
-                        <br />
-                        <a href="../Phone/Edit/@item2.Id" class="btn btn-info">
-                            <span class=" glyphicon glyphicon-edit "></span>
-                        </a>
-                        <br />
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                <img src="@item2.ImgUrl.ToString()" alt="" class="img-responsive" style="width:320px; height:390px">
+                                <div class="caption">
+                                    <h4 class="pull-right">@item2.Price.ToString() руб</h4>
+                                    <h4>
+                                        <a href="~/Phone/Details/@item2.Id">@item2.ModelOfPhone.ToString()</a>
+                                    </h4>
+                                    <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                </div>
+                                <div class="ratings">
+                                    <p class="pull-right">15 reviews</p>
+                                    <p>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     }
-                    <br />
-                    <a href="../Cart/AddToCart/@item2.Id" class="btn btn-success ">
-                        <span class=" glyphicon glyphicon-shopping-cart "></span> Добавить
-                    </a>
-
-                </td>
-            </tr>
-        }
-
-
-    }
-
-</table>
-<br />
-Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
-
+                }
+            </div>
+        </div>
+    </div>
+    Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+
+
+        <!-- /.container -->
+        @*@*<div>
+                    @using (Ajax.BeginForm("PhoneSearch", "Phone", new AjaxOptions { UpdateTargetId = "resultsphone", LoadingElementId = "loading", LoadingElementDuration = 1000 }))
+                    {
+                        <input type="text" name="name" />
+                        <input type="submit" value="Поиск" class="btn" />
+                    }
+                    <img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50"/>
+                    <div id="resultsphone"></div>
+                </div>
+            <div id="resultsphone"></div>
+            <img id="loading" src="@Url.Content("~/Content/Images/loader.gif")" style="display:none" width="50" height="50" />
+            <table class="table table-responsive">
+                <tr>
+                    <th>
+                        Название
+                    </th>
+                    <th>
+                        Описание
+                    </th>
+                    <th>
+                        Изображение
+                    </th>
+                    <th>
+                        Цена
+                    </th>
+                    <th>
+                        Категория
+                    </th>
+                    <th>
+                        Подкатегория
+                    </th>
+                    <th></th>
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var item2 in Model)
+                    {
+
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.ModelOfPhone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Description)
+                            </td>
+                            <td>
+                                <a href="Phone/Details/@item2.Id">
+                                    <img src="@item2.ImgUrl" width="200" height="350" />
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.SubCategory)
+                            </td>
+                            <td>
+
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a href="../Phone/Delete/@item2.Id" class="btn btn-danger">
+                                        <span class=" glyphicon glyphicon-trash "></span>
+                                    </a>
+                                    <br />
+                                    <a href="../Phone/Edit/@item2.Id" class="btn btn-info">
+                                        <span class=" glyphicon glyphicon-edit "></span>
+                                    </a>
+                                    <br />
+                                }
+                                <br />
+                                <a href="../Cart/AddToCart/@item2.Id" class="btn btn-success ">
+                                    <span class=" glyphicon glyphicon-shopping-cart "></span> Добавить
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+
+
+                }
+
+            </table>
+            <br />
+            Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
 
 

@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - PhoneStore</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/shop-homepage.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
 </head>
@@ -29,19 +30,19 @@
                     <li><a href="../Cart/Index"><span class=" glyphicon glyphicon-shopping-cart "></span> Корзина</a></li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                    <li><a href="~/Account/Logoff"><span class="glyphicon glyphicon-log-out"></span> Выйти (@PurchaseManager.GetNameByEmail(User.Identity.Name.ToString())) </a></li>
+                        <li><a href="~/Account/Logoff"><span class="glyphicon glyphicon-log-out"></span> Выйти (@PurchaseManager.GetNameByEmail(User.Identity.Name.ToString())) </a></li>
                     }
                     else
                     {
-                    <li><a href="~/Account/Register"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-                    <li><a href="~/Account/Login"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
+                        <li><a href="~/Account/Register"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+                        <li><a href="~/Account/Login"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
                     }
                 </ul>
             </div>
         </div>
     </nav>
 
-
+    
     <div class="container body-content">
 
         @RenderBody()
