@@ -45,7 +45,20 @@
                     @Html.DisplayFor(modelItem => item2.Phone_cart.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item2.Quantity)
+                    <div class="input-group" style="width: 150px">
+                        <span class="input-group-btn">
+                            <a href="~/Cart/MinusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
+
+<span class="glyphicon glyphicon-minus"></span>
+                            </a>
+                        </span>
+                        <input type="text" name="quant[1]" class="form-control input-number" value="@item2.Quantity" min="1" max="10">
+                        <span class="input-group-btn">
+                            <a href="~/Cart/PlusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </span>
+                    </div>
                 </td>
             </tr>
         }

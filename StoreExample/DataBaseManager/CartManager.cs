@@ -28,7 +28,7 @@ namespace StoreExample.DataBaseManager
             //если найден то увеличивается количество
             else
             {
-                line.Quantity += quantity;
+                    line.Quantity += quantity;
             }
         }
         //метод для удаления товара из корзины
@@ -46,7 +46,6 @@ namespace StoreExample.DataBaseManager
         {
             lineCollection.Clear();
         }
-
         public IEnumerable<CartLine> Lines
         {
             get { return lineCollection; }

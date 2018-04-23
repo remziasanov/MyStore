@@ -38,6 +38,26 @@ namespace StoreExample.Controllers
             ViewBag.Count = GetCart().Lines.Count();
             return RedirectToAction("Index", "Home");
         }
+        public RedirectToRouteResult MinusQuantityFromCart(Guid id)
+        {
+            PhoneItem phone = PhoneItemManager.Get(id);
+            if (phone != null)
+            {
+                GetCart().AddItem(phone, -1);
+            }
+            ViewBag.Count = GetCart().Lines.Count();
+            return RedirectToAction("Index","Cart");
+        }
+        public RedirectToRouteResult PlusQuantityFromCart(Guid id)
+        {
+            PhoneItem phone = PhoneItemManager.Get(id);
+            if (phone != null )
+            {
+                GetCart().AddItem(phone, 1);
+            }
+            ViewBag.Count = GetCart().Lines.Count();
+            return RedirectToAction("Index", "Cart");
+        }
 
         public ActionResult RemoveFromCart(Guid id)
         {
