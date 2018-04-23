@@ -56,7 +56,11 @@
                                     <h4>
                                         <a href="~/Phone/Details/@item2.Id">@item2.ModelOfPhone.ToString()</a>
                                     </h4>
-                                    <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                        <div class="text-right">
+                                            <a href="../Cart/AddToCart/@item2.Id" class="btn btn-success ">
+                                                <span class=" glyphicon glyphicon-shopping-cart "></span> Добавить
+                                            </a>
+                                        </div>
                                 </div>
                                 <div class="ratings">
                                     <p class="pull-right">15 reviews</p>

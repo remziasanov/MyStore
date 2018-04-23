@@ -4,71 +4,42 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>PhoneItem</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ModelOfPhone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModelOfPhone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Company)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Company)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImgUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImgUrl)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SubCategory)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SubCategory)
-        </dd>
-
-    </dl>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">@Model.Category</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="@Model.ImgUrl" style="width:700px;height:800px" alt="">
+                <div class="caption-full">
+                    <h4 class="pull-right">@Model.Price руб</h4>
+                    <h4>
+                        <a href="#">@Model.ModelOfPhone</a>
+                    </h4>
+                    @Model.Description
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">3 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 stars
+                    </p>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a href="../Cart/AddToCart/@Model.Id" class="btn btn-success ">
+                        <span class=" glyphicon glyphicon-shopping-cart "></span> Добавить
+                    </a>
+                </div>   
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
