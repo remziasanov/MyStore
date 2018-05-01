@@ -141,6 +141,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhoneController.cs" />
     <Compile Include="DataBaseManager\CartManager.cs" />
+    <Compile Include="DataBaseManager\CryptoPassword.cs" />
     <Compile Include="DataBaseManager\DataBaseContext.cs" />
     <Compile Include="DataBaseManager\Initializer.cs" />
     <Compile Include="DataBaseManager\PhoneItemManager.cs" />

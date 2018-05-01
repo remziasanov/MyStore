@@ -22,7 +22,7 @@ namespace StoreExample.DataBaseManager
                 purchase.Name = user.Name;
                 purchase.SurName = user.SurName;
                 purchase.Email = user.Email;
-                purchase.Password = user.Password;
+                purchase.Password = CryptoPassword.Hash(user.Password);
                 purchase.Phone = user.Phone;
                 purchase.Address = user.Address;
                 purchase.IndexPost = user.IndexPost;
@@ -47,9 +47,16 @@ namespace StoreExample.DataBaseManager
             Purchase user = null;
             using (DataBaseContext db = new DataBaseContext())
             {
-                user = db.Purchases.FirstOrDefault(u => u.Email == loguser.Email && u.Password == loguser.Password);
+                user = db.Purchases.FirstOrDefault(u => u.Email == loguser.Email);
+                if (user != null && string.Compare(CryptoPassword.Hash(loguser.Password), user.Password) == 0)
+                {
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            return user;
         }
         public static string GetNameByEmail(string email)
         {

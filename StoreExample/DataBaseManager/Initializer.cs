@@ -20,7 +20,7 @@ namespace StoreExample.DataBaseManager
                 Email = "admin@gmail.com",
                 Name = "Admin",
                 SurName = "Admin",
-                Password = "Admin123456789",
+                Password = CryptoPassword.Hash("Admin123456789"),
                 Phone = "+7978000000",
                 Address = "Simferopol",
                 IndexPost = "290000",
