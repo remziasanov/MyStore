@@ -1,72 +1,150 @@
-﻿
-@model List<StoreExample.Models.CartLine>
+﻿@model List<StoreExample.Models.CartLine>
 @{
     ViewBag.Title = "Корзина";
 }
-<div class="container">
-    <table id="cart" class="table table-hover table-condensed">
-        <thead>
-            <tr>
-                <th style="width:50%">Товар</th>
-                <th style="width:10%">Цена</th>
-                <th style="width:8%">Количество</th>
-                <th style="width:22%" class="text-center">Стоимость</th>
-                <th style="width:10%"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item2 in Model)
-            {
-                <tr>
-                    <td data-th="Product">
-                        <div class="row">
-                            <div class="col-sm-2 hidden-xs"><img src="@item2.Phone_cart.ImgUrl" alt="..." class="img-responsive" /></div>
-                            <div class="col-sm-10">
-                                <h4 class="nomargin">@item2.Phone_cart.ModelOfPhone</h4>
-                                <p>@item2.Phone_cart.Description</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td data-th="Price">@item2.Phone_cart.Price руб</td>
-                    <td data-th="Quantity" class="hidden-xs">
-                        <div class="input-group" style="width: 150px">
-                            <span class="input-group-btn">
-                                <a href="~/Cart/MinusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
 
-                                    <span class="glyphicon glyphicon-minus"></span>
-                                </a>
-                            </span>
-                            <input type="text" name="quant[1]" class="form-control input-number" value="@item2.Quantity" min="1">
-                            <span class="input-group-btn">
-                                <a href="~/Cart/PlusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </a>
-                            </span>
-                        </div>
-                        @*<input type="number" class="form-control text-center" value="1">*@
-                    </td>
-                    <td data-th="Subtotal" class="text-center">1.99</td>
-                    <td>
-                        <a href="#" class="btn btn-danger">
-                            <span class=" glyphicon glyphicon-trash "></span>
-                        </a>
-                    </td>
+@if (Model.Count == 0)
+{
+    <div>Корзина пустая</div>
+}
+else
+{
+
+    <div class="container">
+
+        <table id="cart" class="table table-hover table-condensed">
+
+            <thead>
+
+                <tr class="hidden-xs">
+
+                    <th style="width:50%">Товар</th>
+
+                    <th style="width:10%">Цена</th>
+
+                    <th style="width:8%">Количество</th>
+
+                    <th style="width:22%" class="text-center">Стоимость</th>
+
+                    <th style="width:10%"></th>
+
                 </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr class="visible-xs">
-                <td class="text-center"><strong>Сумма @ViewBag.TotalSum.ToString()  руб</strong></td>
-            </tr>
-            <tr>
-                <td><a href="~/Home/Index" class="btn btn-warning"><i class="fa fa-angle-left"></i> Продолжить покупки</a></td>
-                <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>Общая сумма @ViewBag.TotalSum.ToString() руб </strong></td>
-                <td><a href="#" class="btn btn-success btn-block">Оформить заказ <i class="fa fa-angle-right"></i></a></td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item2 in Model)
+
+                {
+
+                    <tr>
+
+                        <td data-th="Product">
+
+                            <div class="row">
+
+                                <div class="col-sm-2 "><img src="@item2.Phone_cart.ImgUrl" alt="..." class="img-responsive" /></div>
+
+                                <div class="col-sm-10">
+
+                                    <h4 class="nomargin">@item2.Phone_cart.ModelOfPhone</h4>
+
+                                    <p class="hidden-xs">@item2.Phone_cart.Description</p>
+                                    <div class="visible-xs">
+                                        <p> <strong> Цена @item2.Phone_cart.Price руб</strong> </p>
+                                        <a href="#" class="btn btn-danger">
+
+                                            <span class=" glyphicon glyphicon-trash "></span>
+
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </td>
+
+                        <td data-th="Price" class="hidden-xs">@item2.Phone_cart.Price руб</td>
+
+                        <td data-th="Quantity" class="hidden-xs">
+
+                            <div class="input-group" style="width: 150px">
+
+                                <span class="input-group-btn">
+
+                                    <a href="~/Cart/MinusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
 
 
+
+                                        <span class="glyphicon glyphicon-minus"></span>
+
+                                    </a>
+
+                                </span>
+
+                                <input type="text" name="quant[1]" class="form-control input-number" value="@item2.Quantity" min="1">
+
+                                <span class="input-group-btn">
+
+                                    <a href="~/Cart/PlusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+
+                                        <span class="glyphicon glyphicon-plus"></span>
+
+                                    </a>
+
+                                </span>
+
+                            </div>
+
+                            @*<input type="number" class="form-control text-center" value="1">*@
+
+                        </td>
+
+                        <td data-th="Subtotal" class="text-center hidden-xs">000</td>
+
+                        <td class="hidden-xs">
+
+                            <a href="#" class="btn btn-danger">
+
+                                <span class=" glyphicon glyphicon-trash "></span>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                }
+
+            </tbody>
+
+            <tfoot>
+
+                <tr class="visible-xs">
+
+                    <td class="text-center"><strong>Сумма @ViewBag.TotalSum.ToString()  руб</strong></td>
+
+                </tr>
+
+                <tr>
+
+                    <td class="hidden-xs"><a href="~/Home/Index" class="btn btn-warning"><i class="fa fa-angle-left"></i> Продолжить покупки</a></td>
+
+                    <td colspan="2" class="hidden-xs"></td>
+
+                    <td class="hidden-xs text-center"><strong>Общая сумма @ViewBag.TotalSum.ToString() руб </strong></td>
+
+                    <td>
+                        <a href="#" class="btn btn-success btn-block">Оформить заказ <i class="fa fa-angle-right"></i></a>
+                        <a href="~/Home/Index" class="btn btn-warning visible-xs" style="margin-top:2px"><i class="fa fa-angle-left"></i> Продолжить покупки</a>
+                    </td>
+
+                </tr>
+            </tfoot>
+
+        </table>
+
+    </div>
+}
 
