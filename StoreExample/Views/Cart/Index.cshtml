@@ -5,7 +5,8 @@
 
 @if (Model.Count == 0)
 {
-    <div>Корзина пустая</div>
+    <div><p style="font-size:30px">Корзина пустая</p></div>
+	<a href="~/Home/Index" class="btn btn-warning" style="margin-top:2px"><i class="fa fa-angle-left"></i><span style="font-size:20px">Сделать покупки</span></a>
 }
 else
 {
@@ -72,14 +73,18 @@ else
                             <div class="input-group" style="width: 150px">
 
                                 <span class="input-group-btn">
-
-                                    <a href="~/Cart/MinusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
-
-
-
+                                    @if (item2.Quantity < 1 || item2.Quantity == 1)
+                                    {
+                                         <a href="~/Cart/MinusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number disabled" data-type="minus" data-field="quant[1]">
                                         <span class="glyphicon glyphicon-minus"></span>
-
                                     </a>
+                                    }
+                                    else
+                                    {
+                                    <a href="~/Cart/MinusQuantityFromCart/@item2.Phone_cart.Id" type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </a>
+                                    }
 
                                 </span>
 
@@ -101,11 +106,11 @@ else
 
                         </td>
 
-                        <td data-th="Subtotal" class="text-center hidden-xs">000</td>
+                        <td data-th="Subtotal" class="text-center hidden-xs">@(item2.Quantity * item2.Phone_cart.Price)  </td>
 
                         <td class="hidden-xs">
 
-                            <a href="#" class="btn btn-danger">
+                            <a href="~/Cart/RemoveFromCart/@item2.Phone_cart.Id" class="btn btn-danger">
 
                                 <span class=" glyphicon glyphicon-trash "></span>
 

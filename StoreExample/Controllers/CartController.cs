@@ -66,7 +66,7 @@ namespace StoreExample.Controllers
             {
                 GetCart().RemoveLine(phone);
             }
-            return View("Index", GetCart().Lines);
+            return RedirectToAction("Index", "Cart");
         }
     }
 }

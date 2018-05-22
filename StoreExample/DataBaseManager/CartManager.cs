@@ -28,7 +28,18 @@ namespace StoreExample.DataBaseManager
             //если найден то увеличивается количество
             else
             {
+                if(quantity > 0)
+                {
                     line.Quantity += quantity;
+                }
+                else
+                {
+                    if(quantity < 0 && line.Quantity!=1)
+                    {
+                        line.Quantity += quantity;
+                    }
+                }
+                    
             }
         }
         //метод для удаления товара из корзины
