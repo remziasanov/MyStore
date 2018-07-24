@@ -45,8 +45,7 @@ namespace StoreExample.DataBaseManager
                 }
             }
             return result;
-        }
-       
+        }     
         public static PhoneItem Get(Guid id)
         {
             using (DataBaseContext db = new DataBaseContext())
